@@ -8,7 +8,7 @@ interface Sound {
   id: string;
   name: string;
   url: string;
-  genre: 'techno' | 'house';
+  genre: 'techno' | 'house' | 'trance';
 }
 
 interface SoundSelectorProps {
@@ -21,6 +21,7 @@ interface SoundSelectorProps {
 const SoundSelector: React.FC<SoundSelectorProps> = ({ padId, currentSound, onSoundSelect, sounds }) => {
   const technoSounds = sounds.filter(s => s.genre === 'techno');
   const houseSounds = sounds.filter(s => s.genre === 'house');
+  const tranceSounds = sounds.filter(s => s.genre === 'trance');
 
   return (
     <Dialog>
@@ -54,6 +55,22 @@ const SoundSelector: React.FC<SoundSelectorProps> = ({ padId, currentSound, onSo
             <h3 className="text-sm font-semibold mb-2">House</h3>
             <div className="grid grid-cols-2 gap-2">
               {houseSounds.map((sound) => (
+                <Button
+                  key={sound.id}
+                  variant={currentSound === sound.url ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => onSoundSelect(padId, sound.url)}
+                  className="text-xs"
+                >
+                  {sound.name}
+                </Button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold mb-2">Trance</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {tranceSounds.map((sound) => (
                 <Button
                   key={sound.id}
                   variant={currentSound === sound.url ? "default" : "outline"}
