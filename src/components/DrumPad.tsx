@@ -21,12 +21,17 @@ const DrumPad: React.FC<DrumPadProps> = ({ id, label, soundUrl, color, onPlay, i
     <button
       onClick={handleClick}
       className={cn(
-        "aspect-square rounded-lg text-white font-bold text-lg shadow-lg transition-all duration-150 active:scale-95",
+        "w-full h-full min-h-[120px] rounded-xl text-white font-bold text-lg shadow-2xl transition-all duration-150 active:scale-95 border border-white/20 backdrop-blur-sm",
         color,
-        isPlaying ? "scale-95 brightness-125" : "hover:brightness-110"
+        isPlaying 
+          ? "scale-95 brightness-150 shadow-cyan-500/50 border-cyan-400/50" 
+          : "hover:brightness-110 hover:shadow-xl hover:border-white/30"
       )}
     >
-      {label}
+      <div className="flex flex-col items-center justify-center h-full">
+        <div className="text-xl font-black tracking-wider">{label}</div>
+        <div className="text-xs opacity-75 mt-1">TAP</div>
+      </div>
     </button>
   );
 };
