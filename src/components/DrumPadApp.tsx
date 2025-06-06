@@ -41,7 +41,7 @@ const DrumPadApp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black p-4">
-      <Card className="max-w-2xl mx-auto bg-gray-800 border-gray-700">
+      <Card className="max-w-md mx-auto bg-gray-800 border-gray-700">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-white">
             🥁 DrumPad Pro
@@ -50,25 +50,25 @@ const DrumPadApp: React.FC = () => {
         </CardHeader>
         
         <CardContent>
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 gap-4 mb-6">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((padNumber, index) => (
-              <div key={padNumber} className="space-y-2">
-                <DrumPad
-                  id={padNumber.toString()}
-                  label={`PAD ${padNumber}`}
-                  soundUrl={padSounds[padNumber.toString()]}
-                  color={padColors[index]}
-                  onPlay={() => playSound(padNumber.toString(), padSounds[padNumber.toString()])}
-                  isPlaying={playingPads.has(padNumber.toString())}
-                />
-                <div className="flex justify-center">
-                  <SoundSelector
-                    padId={padNumber.toString()}
-                    currentSound={padSounds[padNumber.toString()]}
-                    onSoundSelect={handleSoundSelect}
-                    sounds={sounds}
+              <div key={padNumber} className="flex items-center gap-3">
+                <div className="flex-1">
+                  <DrumPad
+                    id={padNumber.toString()}
+                    label={`PAD ${padNumber}`}
+                    soundUrl={padSounds[padNumber.toString()]}
+                    color={padColors[index]}
+                    onPlay={() => playSound(padNumber.toString(), padSounds[padNumber.toString()])}
+                    isPlaying={playingPads.has(padNumber.toString())}
                   />
                 </div>
+                <SoundSelector
+                  padId={padNumber.toString()}
+                  currentSound={padSounds[padNumber.toString()]}
+                  onSoundSelect={handleSoundSelect}
+                  sounds={sounds}
+                />
               </div>
             ))}
           </div>

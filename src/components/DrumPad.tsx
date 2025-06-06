@@ -21,7 +21,7 @@ const DrumPad: React.FC<DrumPadProps> = ({ id, label, soundUrl, color, onPlay, i
     <button
       onClick={handleClick}
       className={cn(
-        "aspect-square rounded-lg text-white font-bold text-lg shadow-lg transition-all duration-150 active:scale-95",
+        "w-full h-16 rounded-lg text-white font-bold text-lg shadow-lg transition-all duration-150 active:scale-95",
         color,
         isPlaying ? "scale-95 brightness-125" : "hover:brightness-110"
       )}
